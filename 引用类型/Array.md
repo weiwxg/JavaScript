@@ -69,3 +69,50 @@ console.log(colors2); //["green", "blue", "yellow", "purple"]
 console.log(colors3); //["green", "blue", "yellow"]
 ```
 
+> *如果slice()方法的参数中有一个负数，则用数组长度加上该数来确定相应的位置。如果结束位置小于起始位置，则返回空数组。*
+
+### splice()
+
+**splice()** 的主要用途是向数组内部插入项，但使用这种方法的方式则有如下3中：
+
+* **删除：** 可以删除任意数量的项，只需要指定2个参数：要删除的第一项位置和要删除的项数。如：splice(0,2) 会删除数组的前两项；
+* **插入：** 可以向指定位置插入任意数量的项，只需要提供3个参数：起始位置、0（要删除的项数）和要插入的项。如果要插入多项，可以再传入第四、第五，以至任意多个项。如：splice(2,0,"red","green")会从当前数组的位置2开始插入字符串"red"和"green"；
+* **替换：** 可以向指定位置插入任意数量的项，且同时删除任意数量的项，只需要指定3个参数：起始位置、要删除的项数和要插入的任意数量的项。插入的项数不必与删除的项数相等。如：splice(2,1,"red","green")会删除当前数组位置2的项，然后再从位置2开始插入字符串"red","green"。
+
+splice() 方法始终会返回一个数组，该数组中包含从原数组中删除的项（如果没有删除任何项，则返回一个空数组）。
+
+``` javascript
+var colors = ["red","green","blue"];
+var removed = colors.splice(0,1); 
+console.log(colors); //["green","blue"]
+console.log(removed); //["red"]
+
+removed = colors.splice(1, 0, "yellow", "orange");
+console.log(colors); //["green","yellow","orange","blue"]
+console.log(removed); //[]
+
+removed = colors.splice(1, 1, "red", "purple");
+console.log(colors); //["green","red","purple","orange","blue"]
+console.log(removed); //["yellow"]
+```
+
+## 位置方法 indexOf()、 lastIndexOf()
+
+``` javascript
+var numbers = [1, 2, 3, 4, 5, 4, 3, 2, 1];
+console.log(numbers.indexOf(4)); //3
+console.log(numbers.lastIndexOf(4)); //5
+
+console.log(numbers.indexOf(4, 4)); //5
+console.log(numbers.lastIndexOf(4, 4)); //3
+
+var person = {name: "Nicholas"};
+var people = [{name: "Nicholas"}];
+
+var morePeople = [person];
+
+//要求查找的项必须要严格相等（===）
+console.log(people.indexOf(person)); //-1
+console.log(morePeople.indexOf(person)); //0
+```
+
