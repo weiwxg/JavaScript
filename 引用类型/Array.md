@@ -3,7 +3,7 @@
 ## 检测数组
 
 * value instanceof Array
-* Array.isArray(valued)
+* Array.isArray(value)
 
 ## push()、pop()、shift()、unshift()
 
@@ -21,7 +21,7 @@ console.log(arr); //[5,4,3,2,1]
 
 ### sort()
 
-**sort()** 方法按升序排列数组项。为了实现排序，**sort()** 方法会调用每个数组项的 **toString()** 方法，然后比较得到的字符串，以确定如何排序。即使数组中的每一项都是述职会，**sort()** 比较的也是字符串。
+**sort()** 方法按升序排列数组项。为了实现排序，**sort()** 方法会调用每个数组项的 **toString()** 方法，然后比较得到的字符串，以确定如何排序。即使数组中的每一项都是数字值，**sort()** 比较的也是字符串。
 
 ``` javascript
 var arr = [0,1,5,10,15];
