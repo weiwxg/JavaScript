@@ -116,3 +116,90 @@ console.log(people.indexOf(person)); //-1
 console.log(morePeople.indexOf(person)); //0
 ```
 
+## 迭代
+
+### every()
+
+对数组中的每一项运行给定函数，如果该函数对每一项都返回true，则返回true。
+
+``` javascript
+var numbers = [1, 2, 3, 4, 5, 4, 3, 2, 1];
+var everyResult = numbers.every(function(item, index, array){
+    return item > 2;
+});
+console.log(everyResult); //false
+```
+
+### some()
+
+对数组中的每一项执行给定函数，如果该函数对任一项返回true，则返回true。
+
+``` javascript
+var numbers = [1, 2, 3, 4, 5, 4, 3, 2, 1];
+var someResult = numbers.some(function(item, index, array){
+    return item > 2;
+});
+console.log(someResult); //true
+```
+
+### filter()
+
+对数组中的每一项运行给定函数，返回该函数会返回true的项组成的数组。
+
+``` javascript
+var numbers = [1, 2, 3, 4, 5, 4, 3, 2, 1];
+var filterResult = numbers.filter(function(item, index, array){
+    return item > 2;
+});
+console.log(filterResult); //[3, 4, 5, 4, 3]
+```
+
+### forEach()
+
+对数组中的每一项运行给定函数。这个方法没有返回值。
+
+``` javascript
+var numbers = [1, 2, 3, 4, 5, 4, 3, 2, 1];
+numbers.forEach(function(item, index, array){
+    item++;
+});
+console.log(numbers); //[1, 2, 3, 4, 5, 4, 3, 2, 1]
+numbers.forEach(function(item, index, array){
+    array[index]++;
+});
+console.log(numbers); //[2, 3, 4, 5, 6, 5, 4, 3, 2]
+```
+
+### map()
+
+对数组中的每一项运行给定函数，返回每次函数调用的结果组成数组。
+
+``` javascript
+var numbers = [1, 2, 3, 4, 5, 4, 3, 2, 1];
+var mapResult = numbers.map(function(item, index, array){
+    return item * 2;
+});
+console.log(mapResult); //[2, 4, 6, 8, 10, 8, 6, 4, 2]
+```
+
+## 缩小 reduce()、reduceRight()
+
+``` javascript
+var values = [1, 2, 3, 4, 5];
+var sum = values.reduce(function(prev, cur, index, array){
+    // 第一次：prev = 1, cur = 2
+    // 第二次: prev = 3 (1+2); cur = 3
+    // ...
+    return prev + cur;
+});
+console.log(sum); //15
+
+sum = values.reduceRight(function(prev, cur, index, array){
+    // 第一次：prev = 5, cur = 4
+    // 第二次: prev = 9 (5+4), cur = 3
+    // ...
+    return prev + cur;
+});
+console.log(sum); //15
+```
+
